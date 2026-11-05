@@ -2,27 +2,26 @@ name: validacion pagina
 
 on:
   push:
-    branches: [ "main"]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main]
+    branches: [ "main" ]
 
-    jobs:
-    validacion:
-      name:crear una maquina virtual
-      runs-on: ubuntu-latest
+jobs:
+  validacion:
+    name: crear una maquina virtual
+    runs-on: ubuntu-latest
 
-      steps:
+    steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: instalar node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '22'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
 
-        - name: validar codigo HTML
+      - name: validar codigo HTML
         run: |
-         echo "inicio"
-         npx html-validate "**/*.html"
-         echo "fin"
-
+          echo "inicio"
+          npx html-validate "**/*.html"
+          echo "fin"
